@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Straying - HTML Edition</title>
+    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%2312100e"/><path d="M18 46h28V18H18z" fill="none" stroke="%23d8b35b" stroke-width="4"/><path d="M30 33h4v4h-4z" fill="%23f1e7d1"/></svg>' />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main id="game" class="game" aria-live="polite">
+      <section id="stage" class="stage" data-room="void">
+        <div class="room">
+          <div class="room__wall room__wall--back"></div>
+          <div class="room__wall room__wall--left"></div>
+          <div class="room__wall room__wall--right"></div>
+          <div class="room__floor"></div>
+          <div class="room__light"></div>
+          <div class="room__door" aria-hidden="true"></div>
+          <div class="room__keepsakes" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div id="figure" class="figure figure--hidden" aria-hidden="true">
+          <div class="figure__head"></div>
+          <div class="figure__body"></div>
+          <div class="figure__arm figure__arm--left"></div>
+          <div class="figure__arm figure__arm--right"></div>
+          <div class="figure__hand"></div>
+        </div>
+
+        <div id="titleScreen" class="title-screen">
+          <div class="title-screen__content">
+            <p class="title-screen__kicker">a quiet room / a missing memory</p>
+            <h1>Straying</h1>
+            <div class="title-screen__actions">
+              <button id="startButton" class="primary-action" type="button">はじめから</button>
+              <button id="continueButton" class="ghost-action" type="button">つづきから</button>
+            </div>
+            <div class="language-switch" role="group" aria-label="language">
+              <button class="language-switch__button is-active" type="button" data-lang="ja">日本語</button>
+              <button class="language-switch__button" type="button" data-lang="en">ENGLISH</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="hud" class="hud" hidden>
+          <button id="saveButton" class="tool-button" type="button" title="保存">保存</button>
+          <button id="loadButton" class="tool-button" type="button" title="読込">読込</button>
+          <button id="titleButton" class="tool-button" type="button" title="タイトル">タイトル</button>
+        </div>
+
+        <section id="dialogue" class="dialogue" hidden>
+          <div class="dialogue__name" id="speakerName"></div>
+          <button id="textButton" class="dialogue__text" type="button">
+            <span id="lineText"></span>
+          </button>
+          <div id="choices" class="choices" aria-label="choices"></div>
+        </section>
+
+        <form id="nameForm" class="name-panel" hidden>
+          <label id="nameLabel" for="nameInput">呼ばれたい名前</label>
+          <div class="name-panel__row">
+            <input id="nameInput" name="name" maxlength="8" autocomplete="off" />
+            <button id="nameSubmit" type="submit">決定</button>
+          </div>
+        </form>
+
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
